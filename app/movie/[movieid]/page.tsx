@@ -9,7 +9,8 @@ type PageProps = {
 };
 
 async function getMovieDetails(id: string) {
-  const res = await fetch(`/api/movie/details`, {
+  const baseUrl = "http://localhost:3000";  
+  const res = await fetch(`${baseUrl}/api/movie/details`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ movieid: id }),
