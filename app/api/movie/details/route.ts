@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   const url = `https://api.themoviedb.org/3/movie/${movieid}?api_key=${apiKey}&language=en-US`;
-  console.log("Fetching movie details:", url);
+  // console.log("Fetching movie details:", url);
 
   const res = await fetch(url, { cache: "no-store" });
 
