@@ -3,13 +3,11 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 
 type PageProps = {
-  params: {
-    movieid: string;
-  };
+  params: Promise<{ movieid: string }>;
 };
 
 async function getMovieDetails(id: string) {
-  const baseUrl = "http://localhost:3000";  
+  const baseUrl = "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/movie/details`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -27,8 +25,7 @@ async function getMovieDetails(id: string) {
   return data;
 }
 
-export default async function MovieDetailsPage(props: PageProps) {
-  const { params } = await props;
+export default async function MovieDetailsPage({ params }: PageProps) {
   const { movieid } = await params;
 
   const moviedata = await getMovieDetails(movieid);
