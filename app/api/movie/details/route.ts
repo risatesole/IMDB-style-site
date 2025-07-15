@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.NEXT_THEMOVIEDB;
+  const apiKey = process.env.THEMOVIEDB;
   if (!apiKey) {
     return new Response(
       JSON.stringify({ error: "Missing NEXT_THEMOVIEDB API key" }),
