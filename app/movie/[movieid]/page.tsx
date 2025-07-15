@@ -7,7 +7,7 @@ type PageProps = {
 };
 
 async function getMovieDetails(id: string) {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL||"http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/movie/details`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
