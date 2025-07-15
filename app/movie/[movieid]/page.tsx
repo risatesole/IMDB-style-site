@@ -103,9 +103,9 @@ export default async function MovieDetailsPage({ params }: PageProps) {
         <Link href={moviedata.homepage}>Home page of the movie</Link>
       </p>
 
-      <p>
+      {/* <p>
         <pre>{JSON.stringify(moviedata, null, 2)}</pre>
-      </p>
+      </p> */}
     </div>
   );
 }
