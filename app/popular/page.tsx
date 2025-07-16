@@ -5,36 +5,35 @@ type CardData = {
   title: string;
   posterimageurl: string;
   redirecturl: string;
-  details?: string;
+  overview?:string;
 };
 
-function CardComponent({ title, posterimageurl, redirecturl }: CardData) {
+function CardComponent({ title, posterimageurl, redirecturl,overview }: CardData) {
   return (
-    <div>
-      <p>Movie card</p>
+    <div className={styles.cardsContainer}>
       <Link href={redirecturl}>
         <img
           src={posterimageurl}
           alt={`${title} poster`}
-          title={`${title} poster`}
+          title={`${title} poster ${overview}`}
           className={styles.posterImage}
         />
       </Link>
       <p>{title}</p>
-      <p>End of movie card</p>
     </div>
   );
 }
 
 function CardsPopularPage({ cards }: { cards: CardData[] }) {
   return (
-    <div>
+    <div className={styles.cardsection}>
       {cards.map((card, index) => (
         <CardComponent
           key={index}
           title={card.title}
           posterimageurl={card.posterimageurl}
           redirecturl={card.redirecturl}
+          overview={card.overview}
         />
       ))}
     </div>
@@ -66,6 +65,7 @@ export default async function PopularPage() {
     title: item.name,
     posterimageurl: `https://image.tmdb.org/t/p/w200${item.poster_path}`,
     redirecturl: `/show/${item.id}`,
+    overview: `${item.overview}`,
   }));
 
   return (

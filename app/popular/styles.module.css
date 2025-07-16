@@ -1,11 +1,31 @@
-
-.posterImage {
-  border-radius: 8px;
-  margin-top: 20px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+.cardsection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; 
+  justify-content: flex-start; 
+  padding: 15px;
 }
 
-.posterImage:hover {
-  transform: scale(1.05);
+.cardsContainer {
+  width: 200px; 
+  border: 1px solid #ffffff;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.cardsContainer:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.posterImage {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto 8px auto;
 }
