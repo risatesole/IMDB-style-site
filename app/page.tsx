@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <p>Welcome</p>
-      <p>go to <Link href={'/movie/299534'}>this page</Link> to see movie details based in id in browser url</p>
+      <p>go to <Link href={'/popular'}>this page</Link> to see what tv shows and movies are popular currently</p>
     </div>
   );
 }
