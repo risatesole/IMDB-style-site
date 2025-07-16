@@ -45,7 +45,6 @@ function CardsPopularMovies({ cards }: { cards: CardData[] }) {
   );
 }
 
-
 function CardsPopularTvShows({ cards }: { cards: CardData[] }) {
   return (
     <div className={styles.cardsection}>
@@ -81,7 +80,6 @@ async function getPopularTvshows() {
   return data;
 }
 
-
 async function getPopularMovies() {
   const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/popular/movies`, {
@@ -101,21 +99,32 @@ async function getPopularMovies() {
   return data;
 }
 
+type ShowItem = {
+  id: number;
+  name: string;
+  poster_path: string;
+  overview: string;
+};
 
+type MovieItem = {
+  id: number;
+  name: string;
+  poster_path: string;
+  overview: string;
+};
 
 export default async function PopularPage() {
   const tvShowData = await getPopularTvshows();
   const moviesData = await getPopularMovies();
 
-
-  const showsCardData = tvShowData.results.map((item: any) => ({
+  const showsCardData = tvShowData.results.map((item: ShowItem) => ({
     title: item.name,
     posterimageurl: `https://image.tmdb.org/t/p/w200${item.poster_path}`,
     redirecturl: `/show/${item.id}`,
     overview: `${item.overview}`,
   }));
 
-    const moviesCardData = moviesData.results.map((item: any) => ({
+  const moviesCardData = moviesData.results.map((item: MovieItem) => ({
     title: item.name,
     posterimageurl: `https://image.tmdb.org/t/p/w200${item.poster_path}`,
     redirecturl: `/movie/${item.id}`,
@@ -129,8 +138,6 @@ export default async function PopularPage() {
       <CardsPopularTvShows cards={showsCardData} />
       <h3>Popular movies:</h3>
       <CardsPopularMovies cards={moviesCardData} />
-
-      
 
       {/* 
       <p>
