@@ -5,10 +5,15 @@ type CardData = {
   title: string;
   posterimageurl: string;
   redirecturl: string;
-  overview?:string;
+  overview?: string;
 };
 
-function CardComponent({ title, posterimageurl, redirecturl,overview }: CardData) {
+function CardComponent({
+  title,
+  posterimageurl,
+  redirecturl,
+  overview,
+}: CardData) {
   return (
     <div className={styles.cardsContainer}>
       <Link href={redirecturl}>
@@ -24,7 +29,24 @@ function CardComponent({ title, posterimageurl, redirecturl,overview }: CardData
   );
 }
 
-function CardsPopularPage({ cards }: { cards: CardData[] }) {
+function CardsPopularMovies({ cards }: { cards: CardData[] }) {
+  return (
+    <div className={styles.cardsection}>
+      {cards.map((card, index) => (
+        <CardComponent
+          key={index}
+          title={card.title}
+          posterimageurl={card.posterimageurl}
+          redirecturl={card.redirecturl}
+          overview={card.overview}
+        />
+      ))}
+    </div>
+  );
+}
+
+
+function CardsPopularTvShows({ cards }: { cards: CardData[] }) {
   return (
     <div className={styles.cardsection}>
       {cards.map((card, index) => (
@@ -42,7 +64,7 @@ function CardsPopularPage({ cards }: { cards: CardData[] }) {
 
 async function getPopularTvshows() {
   const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/popular`, {
+  const res = await fetch(`${baseUrl}/api/popular/shows`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ placeholder: "myplaceholder" }),
@@ -58,20 +80,57 @@ async function getPopularTvshows() {
   const data = await res.json();
   return data;
 }
-export default async function PopularPage() {
-  const data = await getPopularTvshows();
 
-  const cardsData = data.results.map((item: any) => ({
+
+async function getPopularMovies() {
+  const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/popular/movies`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ placeholder: "myplaceholder" }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error("Error response from api:", errorText);
+    throw new Error(`Failed to fetch movie details. Status: ${res.status}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
+
+
+
+export default async function PopularPage() {
+  const tvShowData = await getPopularTvshows();
+  const moviesData = await getPopularMovies();
+
+
+  const showsCardData = tvShowData.results.map((item: any) => ({
     title: item.name,
     posterimageurl: `https://image.tmdb.org/t/p/w200${item.poster_path}`,
     redirecturl: `/show/${item.id}`,
     overview: `${item.overview}`,
   }));
 
+    const moviesCardData = moviesData.results.map((item: any) => ({
+    title: item.name,
+    posterimageurl: `https://image.tmdb.org/t/p/w200${item.poster_path}`,
+    redirecturl: `/movie/${item.id}`,
+    overview: `${item.overview}`,
+  }));
+
   return (
     <div>
-      <p>Welcome to the popular page</p>
-      <CardsPopularPage cards={cardsData} />
+      <h2>Welcome to the popular content page</h2>
+      <h3>Popular tv shows: </h3>
+      <CardsPopularTvShows cards={showsCardData} />
+      <h3>Popular movies:</h3>
+      <CardsPopularMovies cards={moviesCardData} />
+
+      
 
       {/* 
       <p>
