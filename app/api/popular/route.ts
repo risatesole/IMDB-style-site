@@ -2,9 +2,9 @@
  * Present popular tv shows for now
  */
 export const dynamic = "force-dynamic";
-import { NextRequest } from "next/server";
+// import { NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   const apiKey = process.env.THEMOVIEDB;
   if (!apiKey) {
     return new Response(
@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const body = await request.json();
-  const { placeholder } = body;
+  // const body = await request.json();
+  // const { placeholder } = body;
 
 //   if (!movieid) {
 //     return new Response(JSON.stringify({ error: "Missing movieid in body" }), {

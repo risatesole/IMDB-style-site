@@ -28,14 +28,14 @@ import styles from "./styles.module.css";
 
 type CardRowProps = {
   title: string;
-  overview: string;
+  // overview: string;
   posterimageurl: string;
   redirecturl: string;
 };
 
 function CardRowComponent({
   title,
-  overview,
+  // overview,
   posterimageurl,
   redirecturl,
 }: CardRowProps) {
@@ -81,14 +81,14 @@ export default async function PopularPage() {
       <p>Welcome to the popular page</p>
       <CardRowComponent
         title={data.results[0].name}
-        overview={data.results[0].overview}
+        // overview={data.results[0].overview}
         posterimageurl={`https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`}
         redirecturl={`/show/${data.results[0].id}`}
       />
 
       <CardRowComponent
         title={data.results[1].name}
-        overview={data.results[1].overview}
+        // overview={data.results[1].overview}
         posterimageurl={`https://image.tmdb.org/t/p/w200${data.results[1].poster_path}`}
         redirecturl={`/show/${data.results[1].id}`}
       />
