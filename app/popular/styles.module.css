@@ -1,0 +1,11 @@
+
+.posterImage {
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.posterImage:hover {
+  transform: scale(1.05);
+}
