@@ -1,52 +1,45 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-function CardComponent(
-  title: string,
-  details: string,
-  posterimageurl: string,
-  redirecturl: string
-) {
-  return (
-    <>
-      <div>
-        <p>Movie card</p>
-        <Link href={`${redirecturl}`} passHref>
-          <img
-            src={`${redirecturl}`}
-            alt={`${title} poster`}
-            title={`${title} poster`}
-            className={styles.posterImage}
-          />
-        </Link>
-
-        <p>End of movie card</p>
-      </div>
-    </>
-  );
-}
-
 type CardData = {
   title: string;
   posterimageurl: string;
   redirecturl: string;
+  details?: string;
 };
+
+function CardComponent({ title, posterimageurl, redirecturl }: CardData) {
+  return (
+    <div>
+      <p>Movie card</p>
+      <Link href={redirecturl}>
+        <img
+          src={posterimageurl}
+          alt={`${title} poster`}
+          title={`${title} poster`}
+          className={styles.posterImage}
+        />
+      </Link>
+      <p>{title}</p>
+      <p>End of movie card</p>
+    </div>
+  );
+}
 
 function CardsPopularPage({ cards }: { cards: CardData[] }) {
   return (
     <div>
       {cards.map((card, index) => (
-        <Link href={card.redirecturl} key={index}>
-          <div>
-            <img src={card.posterimageurl} alt={`${card.title} poster`} />
-            <p>{card.title}</p>
-          </div>
-        </Link>
+        <CardComponent
+          key={index}
+          title={card.title}
+          posterimageurl={card.posterimageurl}
+          redirecturl={card.redirecturl}
+        />
       ))}
     </div>
   );
 }
-
 
 async function getPopularTvshows() {
   const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL || "http://localhost:3000";
@@ -88,4 +81,3 @@ export default async function PopularPage() {
     </div>
   );
 }
-
