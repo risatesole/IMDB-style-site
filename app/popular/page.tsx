@@ -9,31 +9,31 @@ async function MovieCard() {
         <p>Hi</p>
         <p>Movie card</p>
 
-<Link href={`/title/${data.results[0].id}`} passHref>
-  <img
-    src={`https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`}
-    alt={`${data.results[0].name} poster`}
-    title={`${data.results[0].name} poster`}
-    className={styles.posterImage}
-  />
-</Link>
-<Link href={`/title/${data.results[1].id}`} passHref>
-  <img
-    src={`https://image.tmdb.org/t/p/w200${data.results[1].poster_path}`}
-    alt={`${data.results[1].name} poster`}
-    title={`${data.results[1].name} poster`}
-    className={styles.posterImage}
-  />
-</Link>
-<Link href={`/title/${data.results[2].id}`} passHref>
-  <img
-    src={`https://image.tmdb.org/t/p/w200${data.results[2].poster_path}`}
-    alt={`${data.results[2].name} poster`}
-    title={`${data.results[2].name} poster`}
-    className={styles.posterImage}
-  />
-</Link>
-<p>{data.results[2].id}</p>
+        <Link href={`/title/${data.results[0].id}`} passHref>
+          <img
+            src={`https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`}
+            alt={`${data.results[0].name} poster`}
+            title={`${data.results[0].name} poster`}
+            className={styles.posterImage}
+          />
+        </Link>
+        <Link href={`/title/${data.results[1].id}`} passHref>
+          <img
+            src={`https://image.tmdb.org/t/p/w200${data.results[1].poster_path}`}
+            alt={`${data.results[1].name} poster`}
+            title={`${data.results[1].name} poster`}
+            className={styles.posterImage}
+          />
+        </Link>
+        <Link href={`/title/${data.results[2].id}`} passHref>
+          <img
+            src={`https://image.tmdb.org/t/p/w200${data.results[2].poster_path}`}
+            alt={`${data.results[2].name} poster`}
+            title={`${data.results[2].name} poster`}
+            className={styles.posterImage}
+          />
+        </Link>
+        <p>{data.results[2].id}</p>
 
         {/* <p>name: {data.results[0].name}</p> */}
 
