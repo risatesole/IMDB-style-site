@@ -1,43 +1,55 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
-async function MovieCard() {
-  const data = await getPopularTvshows();
 
+function CardComponent(
+  title: string,
+  details: string,
+  posterimageurl: string,
+  redirecturl: string
+) {
   return (
     <>
       <div>
-        <p>Hi</p>
         <p>Movie card</p>
-
-        <Link href={`/title/${data.results[0].id}`} passHref>
+        <Link href={`${redirecturl}`} passHref>
           <img
-            src={`https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`}
-            alt={`${data.results[0].name} poster`}
-            title={`${data.results[0].name} poster`}
+            src={`${redirecturl}`}
+            alt={`${title} poster`}
+            title={`${title} poster`}
             className={styles.posterImage}
           />
         </Link>
-        <Link href={`/title/${data.results[1].id}`} passHref>
-          <img
-            src={`https://image.tmdb.org/t/p/w200${data.results[1].poster_path}`}
-            alt={`${data.results[1].name} poster`}
-            title={`${data.results[1].name} poster`}
-            className={styles.posterImage}
-          />
-        </Link>
-        <Link href={`/title/${data.results[2].id}`} passHref>
-          <img
-            src={`https://image.tmdb.org/t/p/w200${data.results[2].poster_path}`}
-            alt={`${data.results[2].name} poster`}
-            title={`${data.results[2].name} poster`}
-            className={styles.posterImage}
-          />
-        </Link>
-        <p>{data.results[2].id}</p>
-
-        {/* <p>name: {data.results[0].name}</p> */}
 
         <p>End of movie card</p>
+      </div>
+    </>
+  );
+}
+
+type CardRowProps = {
+  title: string;
+  overview: string;
+  posterimageurl: string;
+  redirecturl: string;
+};
+
+function CardRowComponent({
+  title,
+  overview,
+  posterimageurl,
+  redirecturl,
+}: CardRowProps) {
+  return (
+    <>
+      <div>
+        <Link href={redirecturl} passHref>
+          <img
+            src={posterimageurl}
+            alt={`${title} poster`}
+            title={`${title} poster`}
+            className={styles.posterImage}
+          />
+        </Link>
       </div>
     </>
   );
@@ -66,8 +78,21 @@ export default async function PopularPage() {
   const data = await getPopularTvshows();
   return (
     <div>
-      <MovieCard />
       <p>Welcome to the popular page</p>
+      <CardRowComponent
+        title={data.results[0].name}
+        overview={data.results[0].overview}
+        posterimageurl={`https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`}
+        redirecturl={`/show/${data.results[0].id}`}
+      />
+
+      <CardRowComponent
+        title={data.results[1].name}
+        overview={data.results[1].overview}
+        posterimageurl={`https://image.tmdb.org/t/p/w200${data.results[1].poster_path}`}
+        redirecturl={`/show/${data.results[1].id}`}
+      />
+
       <p>id: {JSON.stringify(data.results[0].id, null, 2)}</p>
       <p>name: {JSON.stringify(data.results[0].name, null, 2)}</p>
       <p>poster:</p>
