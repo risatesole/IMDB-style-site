@@ -24,13 +24,13 @@ async function getShowDetails(id: string) {
   return data;
 }
 
-function ShowJsonInFrontend(data: any) {
-  return (
-    <p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </p>
-  );
-}
+// function ShowJsonInFrontend(data: any) {
+//   return (
+//     <p>
+//       <pre>{JSON.stringify(data, null, 2)}</pre>
+//     </p>
+//   );
+// }
 
 export default async function MovieDetailsPage({ params }: PageProps) {
   const { showid } = await params;

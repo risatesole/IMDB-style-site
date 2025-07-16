@@ -1,30 +1,30 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-function CardComponent(
-  title: string,
-  details: string,
-  posterimageurl: string,
-  redirecturl: string
-) {
-  return (
-    <>
-      <div>
-        <p>Movie card</p>
-        <Link href={`${redirecturl}`} passHref>
-          <img
-            src={`${redirecturl}`}
-            alt={`${title} poster`}
-            title={`${title} poster`}
-            className={styles.posterImage}
-          />
-        </Link>
+// function CardComponent(
+//   title: string,
+//   details: string,
+//   posterimageurl: string,
+//   redirecturl: string
+// ) {
+//   return (
+//     <>
+//       <div>
+//         <p>Movie card</p>
+//         <Link href={`${redirecturl}`} passHref>
+//           <img
+//             src={`${redirecturl}`}
+//             alt={`${title} poster`}
+//             title={`${title} poster`}
+//             className={styles.posterImage}
+//           />
+//         </Link>
 
-        <p>End of movie card</p>
-      </div>
-    </>
-  );
-}
+//         <p>End of movie card</p>
+//       </div>
+//     </>
+//   );
+// }
 
 type CardRowProps = {
   title: string;
