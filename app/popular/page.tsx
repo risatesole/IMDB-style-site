@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
+import Navbar from "@/components/navbar";
 
 type CardData = {
   title: string;
@@ -133,6 +134,14 @@ export default async function PopularPage() {
 
   return (
     <div>
+            <Navbar
+              brand="What to Watch"
+              links={[
+                { label: "Home", href: "/" },
+                {label: "popular", href: "/popular"}
+              ]}
+            />
+
       <h2>Welcome to the popular content page</h2>
       <h3>Popular tv shows: </h3>
       <CardsPopularTvShows cards={showsCardData} />
