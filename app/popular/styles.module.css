@@ -5,27 +5,3 @@
   justify-content: flex-start; 
   padding: 15px;
 }
-
-.cardsContainer {
-  width: 200px; 
-  border: 1px solid #ffffff;
-  padding: 8px;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 6px;
-  text-align: center;
-  cursor: pointer;
-  transition: box-shadow 0.2s ease;
-}
-
-.cardsContainer:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.posterImage {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  display: block;
-  margin: 0 auto 8px auto;
-}

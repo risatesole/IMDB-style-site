@@ -1,40 +1,13 @@
-import Link from "next/link";
+import Card from "@/components/card";
+import type { CardData } from "@/components/card";
 import styles from "./styles.module.css";
 import Navbar from "@/components/navbar";
-
-type CardData = {
-  title: string;
-  posterimageurl: string;
-  redirecturl: string;
-  overview?: string;
-};
-
-function CardComponent({
-  title,
-  posterimageurl,
-  redirecturl,
-  overview,
-}: CardData) {
-  return (
-    <div className={styles.cardsContainer}>
-      <Link href={redirecturl}>
-        <img
-          src={posterimageurl}
-          alt={`${title} poster`}
-          title={`${title} poster ${overview}`}
-          className={styles.posterImage}
-        />
-      </Link>
-      <p>{title}</p>
-    </div>
-  );
-}
 
 function CardsPopularMovies({ cards }: { cards: CardData[] }) {
   return (
     <div className={styles.cardsection}>
       {cards.map((card, index) => (
-        <CardComponent
+        <Card
           key={index}
           title={card.title}
           posterimageurl={card.posterimageurl}
@@ -50,7 +23,7 @@ function CardsPopularTvShows({ cards }: { cards: CardData[] }) {
   return (
     <div className={styles.cardsection}>
       {cards.map((card, index) => (
-        <CardComponent
+        <Card
           key={index}
           title={card.title}
           posterimageurl={card.posterimageurl}
