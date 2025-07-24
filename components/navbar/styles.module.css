@@ -1,0 +1,75 @@
+.navbar {
+  background: #333;
+  color: white;
+  padding: 0 1rem;
+}
+
+.navContainer {
+  max-width: 100rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.navLogo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navMenu li {
+  margin-left: 1.5rem;
+}
+
+.navMenu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.navToggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.navToggle span {
+  background: white;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+@media (max-width: 720px) {
+  .navMenu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    display: none;
+  }
+
+  .active {
+    display: flex;
+  }
+
+  .navMenu li {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .navToggle {
+    display: flex;
+  }
+}
