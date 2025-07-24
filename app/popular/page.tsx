@@ -62,7 +62,7 @@ function CardsPopularTvShows({ cards }: { cards: CardData[] }) {
 }
 
 async function getPopularTvshows() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASEAPIURL ?? "http://127.0.0.1:3000";
   const res = await fetch(`${baseUrl}/api/popular/shows`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
